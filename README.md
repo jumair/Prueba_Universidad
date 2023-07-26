@@ -32,16 +32,18 @@ _Creará todas las tablas, las relaciones entre tablas y los datos de prueba._
 
 a) Nota media de cada profesor
 
-    SELECT p.nombre, AVG(ca.nota) FROM profesores p
+> Saco la nota media de todos los cursos de cada profesor.
+
+    SELECT p.nombre AS profesor, AVG(ca.nota) AS Nota_Media FROM profesores p
     INNER JOIN cursos c
     ON p.id = c.profesor_id
-    LEFT JOIN calificaciones ca
+    INNER JOIN calificaciones ca
     ON c.id = ca.curso_id
     GROUP BY p.nombre;
 
 b) Mejores notas de cada alumno
 
-    SELECT e.nombre, cur.asignatura, MAX(c.nota) FROM estudiantes e
+    SELECT e.nombre AS Estudiante, cur.asignatura AS Curso, MAX(c.nota) AS Nota FROM estudiantes e
     INNER JOIN calificaciones c
     ON e.id = c.estudiante_id
     INNER JOIN cursos cur
@@ -50,7 +52,7 @@ b) Mejores notas de cada alumno
 
 c) Ordenar a los estudiantes por cursos en los que están inscritos
 
-    SELECT c.asignatura, e.nombre FROM cursos c
+    SELECT c.asignatura AS Curso, e.nombre AS Estudiante FROM cursos c
     INNER JOIN estudiantes_cursos ec
     ON c.id = ec.curso_id
     INNER JOIN estudiantes e
@@ -60,7 +62,7 @@ c) Ordenar a los estudiantes por cursos en los que están inscritos
 d) Crear informe resumido de cursos y sus cualificaciones promedio, ordenados por el curso más desafiante (curso con la calificación promedio más baja) 
 hasta el curso más fácil.
 
-    SELECT c.asignatura, AVG(ca.nota) AS nota_promedio FROM cursos c
+    SELECT c.asignatura AS Curso, AVG(ca.nota) AS Nota_Promedio FROM cursos c
     INNER JOIN calificaciones ca
     ON c.id = ca.curso_id
     GROUP BY c.asignatura
@@ -68,9 +70,9 @@ hasta el curso más fácil.
 
 e) Encontrar que estudiante y profesor tienen más cursos en común
 
-> Como aquí tengo 3 resultados muestro el primero.
+> Como aquí tengo 3 resultados que cumplen la condición muestro el primero con LIMIT 1.
 
-    SELECT p.nombre AS profesor, e.nombre AS estudiante, COUNT(e.nombre) AS cursos_en_comun FROM profesores p
+    SELECT p.nombre AS Profesor, e.nombre AS Estudiante, COUNT(e.nombre) AS Cursos_en_Comun FROM profesores p
     INNER JOIN cursos c
     ON p.id = c.profesor_id
     INNER JOIN estudiantes e
@@ -80,7 +82,7 @@ e) Encontrar que estudiante y profesor tienen más cursos en común
     ON ec.curso_id = c1.id
     ON c.asignatura = c1.asignatura
     GROUP BY p.nombre, e.nombre
-    ORDER BY cursos_en_comun DESC, p.nombre ASC
+    ORDER BY Cursos_en_Comun DESC, p.nombre ASC
     LIMIT 1;
 
 
