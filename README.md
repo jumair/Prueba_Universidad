@@ -43,6 +43,13 @@ GROUP BY p.nombre;
 
 b) Mejores notas de cada alumno
 
+''' SELECT e.nombre, cur.asignatura, MAX(c.nota) FROM estudiantes e
+INNER JOIN calificaciones c
+ON c.estudiante_id = e.id
+INNER JOIN cursos cur
+ON cur.id = c.curso_id
+GROUP BY e.nombre; '''
+
 
 
 
