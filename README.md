@@ -32,8 +32,9 @@ _Creará todas las tablas, las relaciones entre tablas y los datos de prueba._
 
 a) Nota media de cada profesor
 
-> código
-> SELECT p.nombre, AVG(ca.nota) FROM profesores p
+**código**
+
+>   SELECT p.nombre, AVG(ca.nota) FROM profesores p
 INNER JOIN cursos c
 ON c.profesor_id = p.id
 LEFT JOIN calificaciones ca
