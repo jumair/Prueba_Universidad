@@ -20,6 +20,14 @@ Se puede ver el diseño completo con nombres de campos y relaciones exportado de
 
 **univerdidad.pdf** https://github.com/jumair/Prueba_Universidad/blob/main/universidad.pdf
 
+## Script para completar todas las tablas
+
+En phpmyadmin creamos la base de datos univerdidad e importamos el siguiente fichero y lo ejecutamos.
+
+**universidad.sql**  
+
+_Creará todas las tablas, las relaciones entre tablas y los datos de prueba._
+
 
 
 
