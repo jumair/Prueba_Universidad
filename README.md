@@ -14,11 +14,13 @@ En las tablas se han puesto los datos básicos para poder hacer el ejercicio.
 ## Relaciones para completar todas las tablas
 Se puede ver el diseño de las relaciones en el siguiente fichero :
 
-https://github.com/jumair/Prueba_Universidad/blob/main/Relaciones%20Base%20de%20Datos%20universidad.docx
+**Relaciones Base de Datos universidad.docx** https://github.com/jumair/Prueba_Universidad/blob/main/Relaciones%20Base%20de%20Datos%20universidad.docx
 
 Se puede ver el diseño completo con nombres de campos y relaciones exportado desde **phpmyadmin** en el siguiente fichero :
 
-[univerdidad.pdf] https://github.com/jumair/Prueba_Universidad/blob/main/universidad.pdf
+**univerdidad.pdf** https://github.com/jumair/Prueba_Universidad/blob/main/universidad.pdf
+
+
 
 
 
