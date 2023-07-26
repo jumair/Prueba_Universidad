@@ -68,7 +68,7 @@ hasta el curso más fácil.
 
 e) Encontrar que estudiante y profesor tienen más cursos en común
 
-> Como aquí tngo 3 resultados muestro el primero.
+> Como aquí tengo 3 resultados muestro el primero.
 
     SELECT p.nombre AS profesor, e.nombre AS estudiante, COUNT(e.nombre) AS cursos_en_comun FROM profesores p
     INNER JOIN cursos c
