@@ -32,25 +32,57 @@ _Creará todas las tablas, las relaciones entre tablas y los datos de prueba._
 
 a) Nota media de cada profesor
 
-**código**
-
->   SELECT p.nombre, AVG(ca.nota) FROM profesores p
-INNER JOIN cursos c
-ON c.profesor_id = p.id
-LEFT JOIN calificaciones ca
-ON ca.curso_id = c.id
-GROUP BY p.nombre;
+    SELECT p.nombre, AVG(ca.nota) FROM profesores p
+    INNER JOIN cursos c
+    ON p.id = c.profesor_id
+    LEFT JOIN calificaciones ca
+    ON c.id = ca.curso_id
+    GROUP BY p.nombre;
 
 b) Mejores notas de cada alumno
 
     SELECT e.nombre, cur.asignatura, MAX(c.nota) FROM estudiantes e
     INNER JOIN calificaciones c
-    ON c.estudiante_id = e.id
+    ON e.id = c.estudiante_id
     INNER JOIN cursos cur
-    ON cur.id = c.curso_id
+    ON c.curso_id = cur.id
     GROUP BY e.nombre;
 
-c) 
+c) Ordenar a los estudiantes por cursos en los que están inscritos
+
+    SELECT c.asignatura, e.nombre FROM cursos c
+    INNER JOIN estudiantes_cursos ec
+    ON c.id = ec.curso_id
+    INNER JOIN estudiantes e
+    ON ec.estudiante_id = e.id
+    ORDER BY c.asignatura;
+
+d) Crear informe resumido de cursos y sus cualificaciones promedio, ordenados por el curso más desafiante (curso con la calificación promedio más baja) 
+hasta el curso más fácil.
+
+    SELECT c.asignatura, AVG(ca.nota) AS nota_promedio FROM cursos c
+    INNER JOIN calificaciones ca
+    ON c.id = ca.curso_id
+    GROUP BY c.asignatura
+    ORDER BY nota_promedio ASC;
+
+e) Encontrar que estudiante y profesor tienen más cursos en común
+
+> Como aquí tngo 3 resultados muestro el primero.
+
+    SELECT p.nombre AS profesor, e.nombre AS estudiante, COUNT(e.nombre) AS cursos_en_comun FROM profesores p
+    INNER JOIN cursos c
+    ON p.id = c.profesor_id
+    INNER JOIN estudiantes e
+    INNER JOIN estudiantes_cursos ec
+    ON e.id = ec.estudiante_id
+    INNER JOIN cursos c1
+    ON ec.curso_id = c1.id
+    ON c.asignatura = c1.asignatura
+    GROUP BY p.nombre, e.nombre
+    ORDER BY cursos_en_comun DESC, p.nombre ASC
+    LIMIT 1;
+
 
 
 
