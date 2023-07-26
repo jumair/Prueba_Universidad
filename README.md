@@ -12,11 +12,11 @@ Un estudiante puede estar inscrito en un curso pero no tener todavía calificaci
 En las tablas se han puesto los datos básicos para poder hacer el ejercicio.
 
 ## Relaciones para completar todas las tablas
-Se puede ver el diseño de las relaciones en el siguiente fichero :
+1.- Se puede ver el diseño de las relaciones en el siguiente fichero :
 
 **Relaciones Base de Datos universidad.docx** https://github.com/jumair/Prueba_Universidad/blob/main/Relaciones%20Base%20de%20Datos%20universidad.docx
 
-Se puede ver el diseño completo con nombres de campos y relaciones exportado desde **phpmyadmin** en el siguiente fichero :
+2.- Se puede ver el diseño completo con nombres de campos y relaciones exportado desde **phpmyadmin** en el siguiente fichero :
 
 **univerdidad.pdf** https://github.com/jumair/Prueba_Universidad/blob/main/universidad.pdf
 
@@ -24,9 +24,23 @@ Se puede ver el diseño completo con nombres de campos y relaciones exportado de
 
 En phpmyadmin creamos la base de datos univerdidad e importamos el siguiente fichero y lo ejecutamos.
 
-**universidad.sql**  
+**universidad.sql**  https://github.com/jumair/Prueba_Universidad/blob/main/universidad.sql
 
 _Creará todas las tablas, las relaciones entre tablas y los datos de prueba._
+
+## Scripts de consulta de SQL
+
+a) Nota media de cada profesor
+
+> código
+> SELECT p.nombre, AVG(ca.nota) FROM profesores p
+INNER JOIN cursos c
+ON c.profesor_id = p.id
+LEFT JOIN calificaciones ca
+ON ca.curso_id = c.id
+GROUP BY p.nombre;
+
+b) Mejores notas de cada alumno
 
 
 
