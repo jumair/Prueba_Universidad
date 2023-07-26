@@ -11,4 +11,5 @@ Un estudiante puede estar inscrito en un curso pero no tener todavía calificaci
 
 En las tablas se han puesto los datos básicos para poder hacer el ejercicio.
 
+## Relaciones para completar todas las tablas
 
