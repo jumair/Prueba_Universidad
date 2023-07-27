@@ -3,15 +3,22 @@
 Diseñar una Base de Datos de una Universidad que tenga las siguientes tablas : estudiantes, profesores, cursos y calificaciones.
 
 ## Crear Base de datos
-La base de datos se ha creado en MySQL usando XAMPP.
+La base de datos se ha creado en MySQL usando **XAMPP**. _Enlace_ https://www.apachefriends.org/es/index.html.
 
-Se ha tenido en cuenta que un profesor puede impartir varios cursos y un curso es impartido por un sólo profesor.
+Se ha usado también **MySQL Workbench**. _Enlace_ https://dev.mysql.com/downloads/workbench/.
 
-Un estudiante puede estar inscrito en un curso pero no tener todavía calificaciones hasta que no realice el examen de ese curso.
+> Se ha tenido en cuenta que un profesor puede impartir **n** cursos y un curso es impartido por un sólo profesor.
+
+> Un estudiante puede estar inscrito en un curso pero no tener todavía calificaciones hasta que no realice el examen de ese curso.
+
+> Un estudiante puede cursar **n** cursos o asignaturas y un curso puede ser seguido por **n** estudiantes.
+
+> Un estudiante puede tener **n** calificaciones y cada calificación pertenece a un estudiante y un curso.
 
 En las tablas se han puesto los datos básicos para poder hacer el ejercicio.
 
 ## Relaciones para completar todas las tablas
+
 1.- Se puede ver el diseño de las relaciones en el siguiente fichero :
 
 **Relaciones Base de Datos universidad.docx** https://github.com/jumair/Prueba_Universidad/blob/main/Relaciones%20Base%20de%20Datos%20universidad.docx
@@ -19,6 +26,10 @@ En las tablas se han puesto los datos básicos para poder hacer el ejercicio.
 2.- Se puede ver el diseño completo con nombres de campos y relaciones exportado desde **phpmyadmin** en el siguiente fichero :
 
 **univerdidad.pdf** https://github.com/jumair/Prueba_Universidad/blob/main/universidad.pdf
+
+3.- Se puede ver el diseño de relaciones en el siguiente fichero creado desde **MySQL Workbench** :
+
+**universidad.mwb** https://github.com/jumair/Prueba_Universidad/blob/main/universidad.mwb
 
 ## Script para completar todas las tablas
 
@@ -75,14 +86,12 @@ e) Encontrar que estudiante y profesor tienen más cursos en común
     SELECT p.nombre AS Profesor, e.nombre AS Estudiante, COUNT(e.nombre) AS Cursos_en_Comun FROM profesores p
     INNER JOIN cursos c
     ON p.id = c.profesor_id
-    INNER JOIN estudiantes e
     INNER JOIN estudiantes_cursos ec
-    ON e.id = ec.estudiante_id
-    INNER JOIN cursos c1
-    ON ec.curso_id = c1.id
-    ON c.asignatura = c1.asignatura
+    ON c.id = ec.curso_id
+    INNER JOIN estudiantes e
+    ON ec.estudiante_id = e.id
     GROUP BY p.nombre, e.nombre
-    ORDER BY Cursos_en_Comun DESC, p.nombre ASC
+    ORDER BY cursos_en_comun DESC, p.nombre ASC
     LIMIT 1;
 
 
